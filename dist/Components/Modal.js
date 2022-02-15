@@ -58,7 +58,7 @@ export class ModalComponent extends React.PureComponent {
         this._openModal();
     }
     render() {
-        const { autoSort, modalAnimationType, onClosed, showAlphabeticalIndex, searchInputTextColor, keyExtractor, showToTopButton, onEndReached, removeClippedSubviews, FlatListProps, selectPlaceholderText, searchPlaceholderText, SearchInputProps, selected, disabled, items, requireSelection, renderSelectView, ModalProps, backButtonDisabled, renderSearch } = this.props;
+        const { autoSort, modalAnimationType, onClosed, showAlphabeticalIndex, searchInputTextColor, keyExtractor, showToTopButton, onEndReached, removeClippedSubviews, FlatListProps, selectPlaceholderText, searchPlaceholderText, SearchInputProps, selected, disabled, items, requireSelection, renderSelectView, ModalProps, backButtonDisabled, renderSearch, multi } = this.props;
         const { modalVisible, alphabeticalIndexChars, stickyBottomButton, selectedAlpha, selectedObject, searchText } = this.state;
         return (React.createElement(React.Fragment, null,
             React.createElement(SelectBoxComponent, { renderSelectView: renderSelectView, items: items, disabled: disabled, selectedObject: selectedObject, chooseText: (selected && selected.Name) ? selected.Name : selectPlaceholderText, openModal: this.openModal.bind(this) }),
@@ -164,9 +164,9 @@ export class ModalComponent extends React.PureComponent {
         this._setText(text);
     }
     _onSelectMethod(key) {
-        const { onSelected } = this.props;
+        const { onSelected, multi } = this.props;
         this.setState({
-            modalVisible: false,
+            modalVisible: multi ? true : false,
             selectedObject: key,
         });
         this.clearComponent();

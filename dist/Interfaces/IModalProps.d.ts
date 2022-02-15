@@ -32,6 +32,7 @@ export interface IModalProps {
     renderSelectView?: (disabled: boolean, selected: IModalListInDto, showModal: () => void) => React.ReactElement;
     backButtonDisabled?: boolean;
     renderSearch?: (onClose: () => void, onBack: () => void) => JSX.Element;
+    multi?: boolean;
 }
 export interface IModalState {
     modalVisible: boolean;

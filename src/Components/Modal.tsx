@@ -72,7 +72,7 @@ export class ModalComponent extends React.PureComponent<IModalProps, IModalState
 	}
 
 	public render(): JSX.Element {
-		const { autoSort, modalAnimationType, onClosed, showAlphabeticalIndex, searchInputTextColor, keyExtractor, showToTopButton, onEndReached, removeClippedSubviews, FlatListProps, selectPlaceholderText, searchPlaceholderText, SearchInputProps, selected, disabled, items, requireSelection, renderSelectView, ModalProps, backButtonDisabled, renderSearch } = this.props;
+		const { autoSort, modalAnimationType, onClosed, showAlphabeticalIndex, searchInputTextColor, keyExtractor, showToTopButton, onEndReached, removeClippedSubviews, FlatListProps, selectPlaceholderText, searchPlaceholderText, SearchInputProps, selected, disabled, items, requireSelection, renderSelectView, ModalProps, backButtonDisabled, renderSearch, multi } = this.props;
 
 		const { modalVisible, alphabeticalIndexChars, stickyBottomButton, selectedAlpha, selectedObject, searchText } = this.state;
 
@@ -270,9 +270,9 @@ export class ModalComponent extends React.PureComponent<IModalProps, IModalState
 	}
 
 	private _onSelectMethod(key: IModalListInDto): IModalListInDto | void {
-		const { onSelected } = this.props;
+		const { onSelected, multi } = this.props;
 		this.setState({
-			modalVisible: false,
+			modalVisible: multi ? true : false, //Added for multi purposes
 			selectedObject: key as IModalListInDto,
 		});
 		this.clearComponent();
